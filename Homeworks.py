@@ -1,74 +1,36 @@
+# from tkinter import *
+# clicks = 0
+# def click():
+#     global clicks
+#     clicks += 1
 
-# match (int(input())):
-#     case(1):
-#         print("super 1")
-#     case(2):
-#         print("super 2")
-#     case(3):
-#         print("super 3")
-#     case(4):
-#         print("super 4")
-#     case(5):
-#         print("super 5")
+# window = Tk()
+# window.title("Кликер")
+# window.geometry("300x200")
 
+# click_button = Button(window, text="Клик", command='click()')
+# click_button.pack()
 
+# label = Label(window, text=clicks)
+# label.pack()
 
+# window.mainloop()
 
+from tkinter import *
+import random
 
+window = Tk()
+window.title("Игра")
+window.geometry("500x500") 
 
-# num1 = int(input())
-# num2 = int(input())
-# num3 = int(input())
-# match (num2):
-#     case('+'):
-#         print(num1 + num2)
-#     case('-'):
-#         print(num1 - num2)
-#     case(':'):
-#         print(num1 / num2)
-#     case('*'):
-#         print(num1 * num2)
+def move_button():
+    x = random.randint(10, 490)
+    y = random.randint(10, 490)
 
+    button.place(x=x, y=y)
 
+button = Button(window, text="опа", command=move_button)
+button.grid()
 
-
-
-
-import json
-
-users = {}
-
-def create_user():
-    username = input()
-    password = input()
-
-    if username in users:
-        print('your name had added')
-    else:
-        users[username] = password
-        print(f"User {username} had added.")
-
-def delete_user():
-    username = input()
-    if username in users:
-        del users[username]
-
-def display_users():
-    for user in users:
-        print("-", user)
-
-while 0 == 0:
-    command = input()
-
-    if command == "new":
-        create_user()
-    elif command == "del":
-        delete_user()
-    elif command.lower() == "exit":
-        break
-    else:
-        display_users()
-
-with open('users.txt', 'w') as file:
-    json.dump(users, file)
-# sfdgfad
+move_button() 
+window.mainloop()  
