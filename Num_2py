@@ -11,10 +11,31 @@ lable_login.pack()
 entry_login = Entry()
 entry_login.pack()
 
-password_login = Label(text= 'Password:')
-password_login.pack()
+lable_password = Label(text= 'Password:')
+lable_password.pack()
 
-password_login = Entry()
-password_login.pack()
+entry_password = Entry()
+entry_password.pack()
+
+def regist():
+    n = entry_login.get()
+    user[n] = entry_password.get()
+    res.config(text='You are logged')
+    
+def loginn():
+    n = entry_login.get()
+    if (entry_password.get() in user) and (user[n] == entry_password.get()):
+        res.config(text='You are logged')
+    else:
+        res.config(text='There is no such account')
+
+login = Button(text='Login', command=loginn)
+login.pack()
+
+registration = Button(text='Reg', command=regist)
+registration.pack()
+
+res = Label()
+res.pack()
 
 window.mainloop()
