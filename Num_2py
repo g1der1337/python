@@ -1,0 +1,20 @@
+user = {}
+from tkinter import *
+
+window = Tk()
+window.title = 'Calculator'
+window.geometry("200x200")
+
+lable_login = Label(text= 'Login:')
+lable_login.pack()
+
+entry_login = Entry()
+entry_login.pack()
+
+password_login = Label(text= 'Password:')
+password_login.pack()
+
+password_login = Entry()
+password_login.pack()
+
+window.mainloop()
