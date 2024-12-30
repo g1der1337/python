@@ -2,7 +2,7 @@ user = {}
 from tkinter import *
 
 window = Tk()
-window.title = 'Calculator'
+window.title = 'Password Manager'
 window.geometry("200x200")
 
 lable_login = Label(text= 'Login:')
