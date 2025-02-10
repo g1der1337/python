@@ -1,45 +1,66 @@
 from tkinter import *
+n = 0
+
+def on_click():
+    global n
+    n +=1 
+    click_button.config(text=n)
+    
 window = Tk()
-window.title = 'Calculator'
-window.geometry = '400600'
-# window.config(bg="#e4ffa6")
+window.geometry("300x300")
 
-first_numb = Entry()
-first_numb.place(x=30, y=30)
+click_button = Button(window, text="0", command=on_click)
+click_button.pack()
 
-second_numb = Entry()
-second_numb.place(x=30, y=70)
+def on_setting(event): 
+    if event.keysym == "s":
+        global setting_window, btn_width_entry, btn_height_entry, win_width_entry, win_height_entry
+        setting_window = Tk()
+        setting_window("300x300")
+        Label(setting_window, text="Ширина кнопки").pack()
+        btn_width_entry = Entry(setting_window)
+        btn_width_entry.pack()
+ 
+        Label(setting_window, text="Высота кнопки").pack()
+        btn_height_entry = Entry(setting_window)
+        btn_height_entry.pack()
 
-def plus1():
-    n =int(first_numb.get()) + int(second_numb.get())
-    labell.config(text=n)
+        def change_button_size():
+            try:
+                width = int(btn_width_entry.get())
+                height = int(btn_height_entry.get())
+                click_button.config(width=width, height=height)
+            except ValueError:
+                pass
 
-def minus1():
-    n =int(first_numb.get()) - int(second_numb.get())
-    labell.config(text=n)
+        apply_size_btn = Button(setting_window, text="Применить размер кнопки", command=change_button_size)
+        apply_size_btn.pack()
+    
+        Label(setting_window, text="Ширина окна").pack()
+        win_width_entry = Entry(setting_window)
+        win_width_entry.pack()
 
-def multiply1():
-    n =int(first_numb.get()) * int(second_numb.get())
-    labell.config(text=n)
+        Label(setting_window, text="Высота окна").pack()
+        win_height_entry = Entry(setting_window)
+        win_height_entry.pack()
 
-def split1():
-    n =int(first_numb.get()) / int(second_numb.get())
-    labell.config(text=n)
+        def change_window_size():
+            try:
+                width = int(win_width_entry.get())
+                height = int(win_height_entry.get())
+                window.geometry(f"{width}x{height}")
+            except ValueError:
+                pass
 
-plus = Button(text='+', command=plus1)
-plus.place(x=30, y=110)
+        apply_window_size_btn = Button(setting_window, text="Применить", command=change_window_size)
+        apply_window_size_btn.pack()
+        
 
-minus = Button(text='-', command=minus1)
-minus.place(x=65, y=110)
+def of_setting(event):
+    if event.keysym == "w":
+        setting_window.destroy()
 
-multiply = Button(text='*',command=multiply1)
-multiply.place(x=100, y=110)
-
-split = Button(text=':', command=split1)
-split.place(x=135, y=110)
-
-labell = Label(text='')
-labell.place(x=80, y=150)
-
+window.bind("<KeyPress>" , on_setting)
+window.bind("<KeyRelease>" , of_setting)
 
 window.mainloop()
