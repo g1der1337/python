@@ -33,6 +33,7 @@ coin_obj = {
 def reset():
     global n 
     rand_x = randrange(0 , 11)
+    rand_y = randrange(0 , 9)
     coin_obj['x1'] = rand_x * 50
     coin_obj['y1'] = rand_y * 50
     coin_obj['x2'] = (rand_x * 50) + 50
