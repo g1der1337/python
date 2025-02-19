@@ -78,3 +78,5 @@ reset()
 window.bind("<KeyPress>" , fun)
 
 window.mainloop()
+
+# аыфрмворфмвыфвфырывмыф
