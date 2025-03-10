@@ -17,6 +17,4 @@ def fun():
 button = Button(text='вывести', command=fun)
 button.place(x=270, y=100)
 
-
-
 window.mainloop()
